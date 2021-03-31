@@ -22,7 +22,16 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 client.connect(err => {
   const productCollection = client.db(`${process.env.DB_NAME}`).collection("products");
   
-  console.log('connected to db');
+  // console.log('connected to db');
+  
+
+  //add product
+  app.post('/addProduct', (req, res) => {
+    const newProduct = req.body;
+    console.log('adding new product', newProduct);
+    
+
+  })
   
 //   client.close();
 });

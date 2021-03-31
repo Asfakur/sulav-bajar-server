@@ -30,6 +30,12 @@ client.connect(err => {
     const newProduct = req.body;
     console.log('adding new product', newProduct);
     
+    //save product to database
+    productCollection.insertOne(newProduct)
+    .then(result =>{
+      console.log('product inserted', result.insertedCount );
+      res.send(result.insertedCount > 0)
+    })
 
   })
   

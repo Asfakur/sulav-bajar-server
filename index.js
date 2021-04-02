@@ -76,6 +76,32 @@ client.connect(err => {
       })
   })
 
+
+  //for deleting one Product
+  
+  app.delete('/deleteProduct/:id', (req, res) => {
+    const id = ObjectID(req.params.id);
+    productCollection.findOneAndDelete({_id: id})
+    .then(result => {
+      res.send(result.value);
+    })
+    
+    // .then(documents => res.send(documents.value));
+  })
+
+  //for deleting an Order
+  
+  app.delete('/deleteOrder/:id', (req, res) => {
+    const id = ObjectID(req.params.id);
+    orderCollection.findOneAndDelete({_id: id})
+    .then(result => {
+      res.send(result.value);
+    })
+    
+  })
+
+
+
   //   client.close();
 });
 

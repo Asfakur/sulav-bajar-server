@@ -46,11 +46,10 @@ client.connect(err => {
   //add product
   app.post('/addProduct', (req, res) => {
     const newProduct = req.body;
-    // console.log('adding new product', newProduct);
+    
     //save product to database
     productCollection.insertOne(newProduct)
       .then(result => {
-        // console.log('product inserted', result.insertedCount);
         res.send(result.insertedCount > 0)
       })
 
@@ -68,11 +67,10 @@ client.connect(err => {
   //for display orders
   app.post('/orders', (req, res) => {
     const email = req.body.email;
-    // console.log(email);
+    
     orderCollection.find({"email" : email})
       .toArray((err, documents) => {
         res.send(documents);
-        // console.log(documents);
       })
   })
 
@@ -86,7 +84,6 @@ client.connect(err => {
       res.send(result.value);
     })
     
-    // .then(documents => res.send(documents.value));
   })
 
   //for deleting an Order
@@ -100,9 +97,6 @@ client.connect(err => {
     
   })
 
-
-
-  //   client.close();
 });
 
 //optional
